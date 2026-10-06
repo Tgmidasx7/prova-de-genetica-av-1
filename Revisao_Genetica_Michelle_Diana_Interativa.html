@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revisão de Prova de Genética — Professora Michelle Diana</title>
+
+<style>
+:root{
+  --bg:#ffffff;
+  --surface:#f8fafc;
+  --surface2:#f1f5f9;
+  --text:#172033;
+  --muted:#64748b;
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --purple:#7c3aed;
+  --green:#059669;
+  --red:#dc2626;
+  --yellow:#d97706;
+  --border:#dbe3ee;
+  --shadow:0 14px 40px rgba(15,23,42,.09);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(37,99,235,.07),transparent 28%),
+    radial-gradient(circle at 90% 0%,rgba(124,58,237,.06),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  line-height:1.6;
+}
+
+.app{
+  width:min(100% - 28px,900px);
+  margin:auto;
+  padding:22px 0 60px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.brand{
+  font-weight:900;
+  letter-spacing:.08em;
+  font-size:.78rem;
+  color:var(--primary);
+}
+
+.progress-text{
+  color:var(--muted);
+  font-size:.86rem;
+  font-weight:700;
+}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.hero{
+  min-height:calc(100vh - 80px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.login-card{
+  width:min(100%,680px);
+  background:rgba(255,255,255,.96);
+  border:1px solid var(--border);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  padding:34px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-flex;
+  padding:7px 13px;
+  border-radius:999px;
+  background:#eff6ff;
+  color:var(--primary);
+  font-size:.75rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(2rem,7vw,4rem);
+  line-height:1.03;
+  margin:18px 0 12px;
+  letter-spacing:-.045em;
+}
+
+h2{
+  font-size:clamp(1.35rem,4vw,2rem);
+  line-height:1.2;
+  margin:0 0 14px;
+}
+
+.subtitle{
+  color:var(--muted);
+  max-width:620px;
+  margin:0 auto 26px;
+}
+
+.input{
+  width:100%;
+  border:1px solid #cbd5e1;
+  border-radius:14px;
+  padding:15px 16px;
+  font-size:1rem;
+  outline:none;
+  color:var(--text);
+  background:white;
+  transition:.2s;
+}
+
+.input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(37,99,235,.10);
+}
+
+.btn{
+  border:0;
+  border-radius:14px;
+  padding:13px 18px;
+  font-size:.98rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:white;
+}
+
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-secondary{
+  background:var(--surface2);
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:10px;
+  margin:25px 0;
+}
+
+.info{
+  text-align:left;
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:14px;
+  border-radius:14px;
+}
+
+.info strong{
+  display:block;
+  margin-bottom:2px;
+}
+
+.info span{
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+.question-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:24px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.question-head{
+  padding:23px 23px 15px;
+  border-bottom:1px solid var(--border);
+}
+
+.question-type{
+  display:inline-flex;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  background:#eff6ff;
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+.question-number{
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.question-text{
+  font-size:clamp(1.05rem,3vw,1.28rem);
+  line-height:1.5;
+  font-weight:800;
+  margin:0;
+}
+
+.options{
+  padding:18px 23px;
+  display:grid;
+  gap:10px;
+}
+
+.option{
+  position:relative;
+}
+
+.option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+
+.option label{
+  display:block;
+  padding:14px 15px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  cursor:pointer;
+  background:#fff;
+  transition:.18s;
+}
+
+.option label:hover{
+  border-color:#93c5fd;
+  background:#f8fbff;
+}
+
+.option input:checked + label{
+  border-color:var(--primary);
+  background:#eff6ff;
+  box-shadow:0 0 0 2px rgba(37,99,235,.08);
+}
+
+.option-letter{
+  display:inline-flex;
+  width:28px;
+  height:28px;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  background:var(--surface2);
+  margin-right:9px;
+  font-weight:900;
+  font-size:.85rem;
+}
+
+.option input:checked + label .option-letter{
+  background:var(--primary);
+  color:white;
+}
+
+.navigation{
+  padding:17px 23px 23px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  border-top:1px solid var(--border);
+}
+
+.hint{
+  color:var(--muted);
+  font-size:.82rem;
+  margin-top:10px;
+  text-align:center;
+}
+
+.final-warning{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  color:#9a3412;
+  padding:14px;
+  border-radius:14px;
+  margin-bottom:15px;
+  font-size:.9rem;
+}
+
+.result-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  padding:28px;
+}
+
+.result-score{
+  text-align:center;
+  padding:25px 10px;
+}
+
+.score-number{
+  font-size:clamp(3.5rem,15vw,6rem);
+  line-height:1;
+  font-weight:950;
+  color:var(--primary);
+}
+
+.score-label{
+  color:var(--muted);
+  font-weight:800;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:22px 0;
+}
+
+.result-box{
+  padding:16px 10px;
+  border-radius:15px;
+  text-align:center;
+  background:var(--surface);
+  border:1px solid var(--border);
+}
+
+.result-box strong{
+  display:block;
+  font-size:1.5rem;
+}
+
+.correct{color:var(--green)}
+.wrong{color:var(--red)}
+.unanswered{color:var(--yellow)}
+
+.result-list{
+  display:grid;
+  gap:9px;
+  margin-top:20px;
+}
+
+.result-item{
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:12px 14px;
+  background:var(--surface);
+}
+
+.result-item.ok{border-left:4px solid var(--green)}
+.result-item.bad{border-left:4px solid var(--red)}
+
+.small{
+  color:var(--muted);
+  font-size:.83rem;
+}
+
+.footer{
+  text-align:center;
+  margin-top:25px;
+  color:var(--muted);
+  font-size:.78rem;
+}
+
+@media(max-width:600px){
+  .app{width:min(100% - 18px,900px)}
+  .login-card{padding:24px 18px;border-radius:22px}
+  .question-head,.options{padding-left:16px;padding-right:16px}
+  .navigation{padding:14px 16px 17px}
+  .btn{padding:12px 14px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- TELA INICIAL -->
+  <section id="loginScreen" class="screen active hero">
+    <div class="login-card">
+      <span class="eyebrow">Modo Mythos+ Ultra • Simulado Interativo</span>
+
+      <h1>Revisão de Prova<br>de Genética</h1>
+
+      <p class="subtitle">
+        <strong>Professora Michelle Diana</strong><br>
+        Genética Molecular • Síntese Proteica • Mutações • Genética Comportamental •
+        Epigenética • Gene × Ambiente
+      </p>
+
+      <div class="info-grid">
+        <div class="info">
+          <strong>15 questões</strong>
+          <span>Alternativas A–E</span>
+        </div>
+        <div class="info">
+          <strong>Uma por vez</strong>
+          <span>Sem revelar respostas</span>
+        </div>
+        <div class="info">
+          <strong>Resultado final</strong>
+          <span>Correção automática</span>
+        </div>
+      </div>
+
+      <label for="studentName" style="display:block;text-align:left;font-weight:800;margin-bottom:7px">
+        Nome do aluno
+      </label>
+
+      <input
+        id="studentName"
+        class="input"
+        type="text"
+        autocomplete="name"
+        placeholder="Digite seu nome"
+        maxlength="80"
+      >
+
+      <button id="startBtn" class="btn btn-primary" style="width:100%;margin-top:13px">
+        Entrar e iniciar revisão
+      </button>
+
+      <p class="hint">
+        Suas respostas serão corrigidas somente quando você clicar em
+        <strong>Receber Gabarito</strong> na última questão.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- TELA DA PROVA -->
+  <section id="quizScreen" class="screen">
+
+    <div class="topbar">
+      <div class="brand">MYTHOS+ ULTRA • GENÉTICA</div>
+      <div id="progressText" class="progress-text">Questão 1 de 15</div>
+    </div>
+
+    <div id="questionContainer"></div>
+
+    <div class="footer">
+      Revisão de Prova de Genética — Professora Michelle Diana
+    </div>
+  </section>
+
+
+  <!-- RESULTADO -->
+  <section id="resultScreen" class="screen">
+
+    <div class="topbar">
+      <div class="brand">RESULTADO FINAL</div>
+      <div class="progress-text">Prova concluída</div>
+    </div>
+
+    <div class="result-card">
+
+      <div class="result-score">
+        <div id="studentResultName" class="small"></div>
+        <div id="scoreNumber" class="score-number">0%</div>
+        <div class="score-label">aproveitamento</div>
+      </div>
+
+      <div class="result-grid">
+        <div class="result-box">
+          <strong id="correctCount" class="correct">0</strong>
+          <span>Certas</span>
+        </div>
+
+        <div class="result-box">
+          <strong id="wrongCount" class="wrong">0</strong>
+          <span>Erradas</span>
+        </div>
+
+        <div class="result-box">
+          <strong id="unansweredCount" class="unanswered">0</strong>
+          <span>Não respondidas</span>
+        </div>
+      </div>
+
+      <div id="performanceMessage"
+           style="padding:15px;border-radius:14px;background:#eff6ff;color:#1e40af;font-weight:700">
+      </div>
+
+      <h2 style="margin-top:28px">Correção da prova</h2>
+
+      <p class="small">
+        Abaixo está a leitura individual de todas as questões. O sistema compara
+        exatamente a alternativa marcada com o gabarito programado.
+      </p>
+
+      <div id="resultList" class="result-list"></div>
+
+      <button class="btn btn-primary" style="width:100%;margin-top:25px" onclick="restartQuiz()">
+        Refazer a prova
+      </button>
+
+    </div>
+
+    <div class="footer">
+      Revisão de Prova de Genética — Professora Michelle Diana
+    </div>
+  </section>
+
+</div>
+
+
+<script>
+
+const questions = [
+
+{
+ type:"AFIRMAÇÃO CORRETA",
+ text:"Sobre o fluxo da informação genética em células eucarióticas, assinale a alternativa CORRETA.",
+ options:[
+ "A) A tradução converte DNA diretamente em proteína.",
+ "B) A replicação produz RNAm a partir do DNA.",
+ "C) A transcrição utiliza DNA como molde para a síntese de RNA.",
+ "D) O RNAt realiza a duplicação do genoma.",
+ "E) A RNA polimerase realiza a tradução."
+ ],
+ answer:"C"
+},
+
+{
+ type:"NEGATIVA",
+ text:"Sobre a síntese proteica, todas as afirmações estão corretas, EXCETO:",
+ options:[
+ "A) O RNAm contém códons.",
+ "B) O RNAt transporta aminoácidos.",
+ "C) O ribossomo participa da formação das ligações peptídicas.",
+ "D) A tradução ocorre nos ribossomos.",
+ "E) O DNA nuclear precisa abandonar o núcleo para ser lido diretamente pelo ribossomo."
+ ],
+ answer:"E"
+},
+
+{
+ type:"APLICAÇÃO",
+ text:"Considere a fita molde de DNA: TAC GGA. Qual sequência de RNA será sintetizada?",
+ options:[
+ "A) TAC GGA",
+ "B) AUG CCU",
+ "C) ATG CCT",
+ "D) UAC GGA",
+ "E) AUG GGA"
+ ],
+ answer:"B"
+},
+
+{
+ type:"CONCEITUAL",
+ text:"A principal função do splicing no processamento do pré-RNAm é:",
+ options:[
+ "A) duplicar o DNA.",
+ "B) converter uracila em timina.",
+ "C) remover íntrons e unir éxons.",
+ "D) transportar aminoácidos.",
+ "E) provocar mutações no RNAm."
+ ],
+ answer:"C"
+},
+
+{
+ type:"EXCLUSÃO",
+ text:"São componentes diretamente relacionados à tradução, EXCETO:",
+ options:[
+ "A) RNAm.",
+ "B) RNAt.",
+ "C) Ribossomo.",
+ "D) Aminoácidos.",
+ "E) DNA polimerase."
+ ],
+ answer:"E"
+},
+
+{
+ type:"CÓDIGO GENÉTICO",
+ text:"Qual alternativa apresenta corretamente o códon de iniciação e os três códons de terminação?",
+ options:[
+ "A) AUG / UAA, UAG e UGA.",
+ "B) UAA / AUG, UAG e UGA.",
+ "C) ATG / TAA, TAG e TGA.",
+ "D) AUG / AAA, CCC e GGG.",
+ "E) UAC / AUG, UAA e UGA."
+ ],
+ answer:"A"
+},
+
+{
+ type:"MUTAÇÕES",
+ text:"Uma inserção de apenas um nucleotídeo dentro da região codificante de um gene tende a ser especialmente prejudicial porque pode:",
+ options:[
+ "A) duplicar automaticamente todo o cromossomo.",
+ "B) transformar RNA em DNA.",
+ "C) deslocar o quadro de leitura dos códons.",
+ "D) eliminar todas as histonas celulares.",
+ "E) impedir definitivamente qualquer replicação celular."
+ ],
+ answer:"C"
+},
+
+{
+ type:"NEGATIVA / PEGADINHA",
+ text:"Sobre mutações, assinale a alternativa INCORRETA.",
+ options:[
+ "A) Uma substituição pode ser silenciosa.",
+ "B) Uma substituição pode gerar uma mutação missense.",
+ "C) Uma substituição pode criar um stop prematuro.",
+ "D) Toda mutação obrigatoriamente causa doença.",
+ "E) Inserções e deleções podem alterar o quadro de leitura."
+ ],
+ answer:"D"
+},
+
+{
+ type:"HEREDITARIEDADE",
+ text:"Um indivíduo desenvolve uma mutação em uma célula da pele após exposição excessiva à radiação ultravioleta. Em condições usuais, essa alteração:",
+ options:[
+ "A) será obrigatoriamente transmitida aos filhos.",
+ "B) transforma-se automaticamente em mutação germinativa.",
+ "C) não será herdada pelos descendentes por estar em uma linhagem somática.",
+ "D) será incorporada aos espermatozoides ou óvulos.",
+ "E) modificará todos os genes do organismo."
+ ],
+ answer:"C"
+},
+
+{
+ type:"GENÉTICA COMPORTAMENTAL",
+ text:"A afirmação “existe um único gene responsável pela depressão” é inadequada principalmente porque:",
+ options:[
+ "A) transtornos mentais não possuem qualquer componente biológico.",
+ "B) características comportamentais complexas geralmente apresentam arquitetura poligênica e multifatorial.",
+ "C) somente fatores culturais influenciam o comportamento.",
+ "D) genes existem apenas durante o desenvolvimento embrionário.",
+ "E) neurônios não possuem DNA."
+ ],
+ answer:"B"
+},
+
+{
+ type:"EPIGENÉTICA",
+ text:"Qual alternativa descreve melhor a epigenética?",
+ options:[
+ "A) Alteração obrigatória da sequência de bases do DNA.",
+ "B) Destruição permanente de genes pela experiência.",
+ "C) Mecanismos regulatórios capazes de modificar padrões de atividade gênica sem exigir mudança na sequência do DNA.",
+ "D) Processo exclusivamente psicológico sem participação molecular.",
+ "E) Sinônimo de mutação cromossômica."
+ ],
+ answer:"C"
+},
+
+{
+ type:"NEGATIVA / PEGADINHA",
+ text:"Sobre epigenética e ambiente, assinale a alternativa INCORRETA.",
+ options:[
+ "A) Condições ambientais podem estar associadas a alterações na regulação gênica.",
+ "B) Metilação do DNA é um mecanismo epigenético importante.",
+ "C) Modificações de histonas podem alterar a acessibilidade da cromatina.",
+ "D) Toda experiência traumática produz necessariamente a mesma alteração epigenética e essa alteração é obrigatoriamente herdada pelos netos.",
+ "E) A relação entre ambiente, fisiologia e expressão gênica é complexa."
+ ],
+ answer:"D"
+},
+
+{
+ type:"INTERPRETAÇÃO",
+ text:"Dois gêmeos monozigóticos compartilham praticamente a mesma sequência genética, mas podem apresentar diferenças comportamentais e de saúde ao longo da vida. Qual conclusão é mais adequada?",
+ options:[
+ "A) O DNA não influencia nenhum fenótipo.",
+ "B) O ambiente elimina completamente a genética.",
+ "C) Genes e ambiente participam de sistemas complexos de desenvolvimento, podendo produzir diferenças fenotípicas.",
+ "D) Gêmeos monozigóticos possuem genomas completamente diferentes.",
+ "E) Toda diferença entre os gêmeos é necessariamente causada por mutações."
+ ],
+ answer:"C"
+},
+
+{
+ type:"EXCLUSÃO / ANÁLISE CRÍTICA",
+ text:"Um psicólogo recebe uma criança com impulsividade, dificuldades de atenção e exposição crônica à privação de sono e violência comunitária. À luz da genética comportamental e da neurociência, qual raciocínio é MAIS adequado?",
+ options:[
+ "A) Os sintomas comprovam automaticamente um transtorno genético.",
+ "B) O contexto social deve ser ignorado porque não interfere na fisiologia.",
+ "C) É necessário avaliar conjuntamente fatores biológicos, psicológicos, desenvolvimentais e ambientais antes de formular conclusões.",
+ "D) A presença de adversidade exclui qualquer possibilidade de transtorno neurobiológico.",
+ "E) Um exame genético isolado determina necessariamente o diagnóstico psicológico."
+ ],
+ answer:"C"
+},
+
+{
+ type:"QUESTÃO INTEGRADORA",
+ text:"Considere a sequência hipotética: Mutação no DNA → alteração do RNAm → alteração de um códon → alteração na sequência de aminoácidos → mudança estrutural da proteína. Qual alternativa interpreta CORRETAMENTE essa sequência?",
+ options:[
+ "A) Toda mutação obrigatoriamente modifica a proteína.",
+ "B) Uma alteração genética pode modificar o produto proteico caso afete de maneira funcionalmente relevante a sequência codificante ou sua expressão.",
+ "C) A tradução modifica diretamente a sequência do DNA.",
+ "D) O RNAt provoca a mutação original.",
+ "E) A proteína alterada retorna ao núcleo e reescreve obrigatoriamente o gene."
+ ],
+ answer:"B"
+}
+
+];
+
+let current = 0;
+let studentName = "";
+let answers = new Array(questions.length).fill(null);
+
+const loginScreen = document.getElementById("loginScreen");
+const quizScreen = document.getElementById("quizScreen");
+const resultScreen = document.getElementById("resultScreen");
+const questionContainer = document.getElementById("questionContainer");
+const progressText = document.getElementById("progressText");
+
+document.getElementById("startBtn").addEventListener("click", startQuiz);
+
+document.getElementById("studentName").addEventListener("keydown", e => {
+  if(e.key === "Enter") startQuiz();
+});
+
+function startQuiz(){
+  const name = document.getElementById("studentName").value.trim();
+
+  if(!name){
+    alert("Digite seu nome para iniciar a revisão.");
+    document.getElementById("studentName").focus();
+    return;
+  }
+
+  studentName = name;
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+
+  loginScreen.classList.remove("active");
+  resultScreen.classList.remove("active");
+  quizScreen.classList.add("active");
+
+  renderQuestion();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderQuestion(){
+
+  const q = questions[current];
+  progressText.textContent = `Questão ${current + 1} de ${questions.length}`;
+
+  const selected = answers[current];
+
+  let optionsHTML = "";
+
+  q.options.forEach((option,index)=>{
+
+    const letter = String.fromCharCode(65 + index);
+    const checked = selected === letter ? "checked" : "";
+
+    optionsHTML += `
+      <div class="option">
+        <input
+          type="radio"
+          name="answer"
+          id="option-${letter}"
+          value="${letter}"
+          ${checked}
+          onchange="selectAnswer('${letter}')"
+        >
+        <label for="option-${letter}">
+          <span class="option-letter">${letter}</span>
+          ${escapeHTML(option.substring(3))}
+        </label>
+      </div>
+    `;
+  });
+
+  const isLast = current === questions.length - 1;
+
+  questionContainer.innerHTML = `
+    <div class="question-card">
+
+      <div class="question-head">
+
+        <div class="question-type">${q.type}</div>
+
+        <div class="question-number">
+          QUESTÃO ${current + 1} / ${questions.length}
+        </div>
+
+        <p class="question-text">
+          ${q.text}
+        </p>
+
+      </div>
+
+      <div class="options">
+        ${optionsHTML}
+      </div>
+
+      <div class="navigation">
+
+        <button
+          class="btn btn-secondary"
+          onclick="previousQuestion()"
+          ${current === 0 ? "disabled" : ""}
+        >
+          ← Anterior
+        </button>
+
+        ${
+          isLast
+          ?
+          `<button
+             class="btn btn-primary"
+             onclick="finishQuiz()"
+           >
+             Receber Gabarito ✓
+           </button>`
+          :
+          `<button
+             class="btn btn-primary"
+             onclick="nextQuestion()"
+           >
+             Próxima →
+           </button>`
+        }
+
+      </div>
+
+    </div>
+
+    <div class="hint">
+      ${isLast
+        ? "Você chegou à última questão. Ao clicar em “Receber Gabarito”, todas as respostas serão corrigidas."
+        : "Selecione uma alternativa e avance para a próxima questão. A resposta correta não será revelada durante a prova."
+      }
+    </div>
+  `;
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function selectAnswer(letter){
+  answers[current] = letter;
+}
+
+function nextQuestion(){
+
+  if(!answers[current]){
+    alert("Selecione uma alternativa antes de avançar.");
+    return;
+  }
+
+  current++;
+  renderQuestion();
+}
+
+function previousQuestion(){
+  if(current > 0){
+    current--;
+    renderQuestion();
+  }
+}
+
+function finishQuiz(){
+
+  if(!answers[current]){
+    alert("Selecione uma alternativa antes de receber o gabarito.");
+    return;
+  }
+
+  const unanswered = answers.filter(a => a === null).length;
+
+  if(unanswered > 0){
+    const go = confirm(
+      `Ainda existem ${unanswered} questão(ões) sem resposta. Deseja finalizar mesmo assim?`
+    );
+
+    if(!go) return;
+  }
+
+  calculateResult();
+}
+
+function calculateResult(){
+
+  let correct = 0;
+  let wrong = 0;
+
+  questions.forEach((q,index)=>{
+    if(answers[index] === q.answer){
+      correct++;
+    }else if(answers[index] !== null){
+      wrong++;
+    }
+  });
+
+  const unanswered = answers.filter(a => a === null).length;
+  const percentage = Math.round((correct / questions.length) * 100);
+
+  document.getElementById("studentResultName").textContent =
+    `Aluno(a): ${studentName}`;
+
+  document.getElementById("scoreNumber").textContent =
+    `${percentage}%`;
+
+  document.getElementById("correctCount").textContent = correct;
+  document.getElementById("wrongCount").textContent = wrong;
+  document.getElementById("unansweredCount").textContent = unanswered;
+
+  let message = "";
+
+  if(percentage >= 90){
+    message = "Excelente desempenho. Você demonstrou domínio muito consistente do conteúdo.";
+  }else if(percentage >= 75){
+    message = "Muito bom desempenho. O conteúdo principal está bem consolidado; revise os pontos específicos das questões erradas.";
+  }else if(percentage >= 60){
+    message = "Bom ponto de partida. Faça uma segunda revisão concentrada nos conceitos que geraram erro.";
+  }else{
+    message = "É recomendável revisar o conteúdo-base e refazer o simulado após a revisão.";
+  }
+
+  document.getElementById("performanceMessage").textContent = message;
+
+  const list = document.getElementById("resultList");
+
+  list.innerHTML = questions.map((q,index)=>{
+
+    const selected = answers[index];
+    const isCorrect = selected === q.answer;
+
+    let statusClass = isCorrect ? "ok" : "bad";
+
+    let selectedText =
+      selected
+      ? q.options[letterIndex(selected)]
+      : "Não respondida";
+
+    return `
+      <div class="result-item ${statusClass}">
+        <strong>Questão ${index+1} — ${isCorrect ? "✓ CERTA" : "✕ ERRADA"}</strong>
+
+        <div class="small" style="margin-top:5px">
+          Sua resposta:
+          <strong>${selectedText}</strong>
+        </div>
+
+        <div class="small">
+          Gabarito:
+          <strong>${q.answer}</strong>
+        </div>
+      </div>
+    `;
+
+  }).join("");
+
+  quizScreen.classList.remove("active");
+  resultScreen.classList.add("active");
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function letterIndex(letter){
+  return letter.charCodeAt(0) - 65;
+}
+
+function restartQuiz(){
+  resultScreen.classList.remove("active");
+  quizScreen.classList.remove("active");
+  loginScreen.classList.add("active");
+
+  document.getElementById("studentName").value = studentName;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function escapeHTML(text){
+  const div = document.createElement("div");
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+</script>
+
+</body>
+</html>
