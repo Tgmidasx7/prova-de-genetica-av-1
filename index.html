@@ -1,1004 +1,744 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revisão de Prova de Genética — Professora Michelle Diana</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b2545">
+<meta name="description" content="Simulado auxiliar de estudo — Psicologia Social">
+<title>Psicologia Social • Simulado 20 Questões</title>
 <style>
 :root{
-  --bg:#ffffff;
-  --surface:#f8fafc;
-  --surface2:#f1f5f9;
-  --text:#172033;
-  --muted:#64748b;
-  --primary:#2563eb;
-  --primary-dark:#1d4ed8;
-  --purple:#7c3aed;
-  --green:#059669;
-  --red:#dc2626;
-  --yellow:#d97706;
-  --border:#dbe3ee;
-  --shadow:0 14px 40px rgba(15,23,42,.09);
+  --navy:#0b2545;
+  --navy2:#153d68;
+  --blue:#2c669d;
+  --blue-soft:#e8f1f8;
+  --yellow:#f4d98b;
+  --yellow-soft:#fff5d6;
+  --rose:#e8a5ac;
+  --rose-deep:#c85f73;
+  --rose-soft:#fbe9ea;
+  --green:#39a86f;
+  --green-soft:#e8f7ee;
+  --cream:#fffaf1;
+  --paper:#f4f6f8;
+  --ink:#1b2938;
+  --muted:#69798a;
+  --line:#dce4eb;
+  --white:#fff;
+  --shadow:0 16px 48px rgba(11,37,69,.10);
 }
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
-  margin:0;
+  margin:0;min-height:100vh;color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
   background:
-    radial-gradient(circle at 10% 0%,rgba(37,99,235,.07),transparent 28%),
-    radial-gradient(circle at 90% 0%,rgba(124,58,237,.06),transparent 28%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  line-height:1.6;
+    radial-gradient(circle at 5% 0%,rgba(244,217,139,.26),transparent 25%),
+    radial-gradient(circle at 100% 15%,rgba(232,165,172,.22),transparent 26%),
+    linear-gradient(145deg,#fbfcfc,#f1f4f7);
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.hidden{display:none!important}
+
+/* ===================== CAPA / FASE 1 ===================== */
+.cover-page{
+  position:relative;overflow:hidden;
+  padding:18px 14px 34px;
+}
+.cover-page:before{
+  content:"";position:absolute;left:-130px;top:-120px;width:310px;height:310px;
+  border-radius:50%;background:var(--navy);
+}
+.cover-page:after{
+  content:"";position:absolute;right:-90px;bottom:-100px;width:250px;height:250px;
+  border-radius:50%;background:var(--rose);
+}
+.cover-wrap{
+  width:min(920px,100%);min-height:calc(100vh - 52px);margin:auto;
+  display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+}
+.cover-card{
+  width:100%;background:rgba(255,255,255,.96);
+  border:1px solid rgba(11,37,69,.08);border-radius:30px;
+  box-shadow:0 24px 80px rgba(11,37,69,.14);overflow:hidden;
+}
+.cover-top{
+  position:relative;min-height:410px;padding:38px 25px 30px;
+  background:
+    linear-gradient(120deg,rgba(244,217,139,.92),rgba(255,250,241,.92) 42%,rgba(232,165,172,.50) 100%);
+}
+.cover-top:after{
+  content:"";position:absolute;right:32px;top:28px;width:165px;height:165px;
+  border-radius:50%;border:30px solid rgba(44,102,157,.88);
+  opacity:.95;
+}
+.cover-top:before{
+  content:"";position:absolute;right:70px;top:66px;width:88px;height:88px;
+  border-radius:50%;background:rgba(255,255,255,.62);
+}
+.cover-content{position:relative;z-index:2;max-width:700px}
+.institution{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.78);
+  color:var(--navy);font-size:.72rem;font-weight:900;letter-spacing:.12em;
+}
+.live{
+  display:inline-flex;align-items:center;gap:6px;margin-left:7px;
+  padding:7px 10px;border-radius:999px;background:var(--green-soft);
+  color:#23784e;font-size:.68rem;font-weight:900;letter-spacing:.08em;
+  box-shadow:0 4px 12px rgba(57,168,111,.12);
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 0 0 rgba(57,168,111,.5);animation:livePulse 1.6s infinite;
+}
+@keyframes livePulse{
+  0%{box-shadow:0 0 0 0 rgba(57,168,111,.5)}
+  70%{box-shadow:0 0 0 7px rgba(57,168,111,0)}
+  100%{box-shadow:0 0 0 0 rgba(57,168,111,0)}
+}
+.subject{
+  margin:34px 0 9px;color:var(--navy);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(3.2rem,10vw,6.3rem);line-height:.88;
+  letter-spacing:-.055em;max-width:720px;
+}
+.subject-rule{
+  width:88px;height:6px;border-radius:10px;
+  background:linear-gradient(90deg,var(--navy),var(--blue),var(--rose));
+  margin:19px 0;
+}
+.cover-desc{
+  max-width:590px;margin:0;color:#465a70;
+  font-size:1rem;line-height:1.65;
+}
+.professor{
+  margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;
+}
+.professor-label{
+  color:#8a5361;font-size:.67rem;font-weight:900;letter-spacing:.16em;
+}
+.professor-name{
+  color:var(--navy);font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,7vw,3.25rem);line-height:1;margin-top:3px;
+}
+.student-ref{
+  margin-top:12px;color:#7b8795;font-size:.7rem;letter-spacing:.08em;
+}
+.cover-form{
+  padding:25px 22px 28px;background:#fff;
+}
+.form-inner{width:min(660px,100%);margin:auto}
+.form-title{color:var(--navy);font-weight:900;font-size:1rem;margin-bottom:9px}
+.name-orbit{
+  position:relative;padding:1.5px;border-radius:17px;overflow:hidden;
+}
+.name-orbit:before{
+  content:"";position:absolute;inset:-120%;
+  background:conic-gradient(from 0deg,transparent 0 315deg,rgba(244,217,139,.12) 328deg,var(--yellow) 343deg,var(--rose) 351deg,var(--blue) 357deg,transparent 360deg);
+  animation:orbit 3s linear infinite;
+}
+.name-orbit:after{
+  content:"";position:absolute;inset:1.5px;border-radius:15px;background:#fff;
+}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.name-inner{position:relative;z-index:2;padding:15px}
+.name-input{
+  width:100%;padding:14px;border:1px solid #ccd7e1;border-radius:11px;
+  outline:none;color:var(--ink);background:#fff;
+}
+.name-input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(44,102,157,.11)}
+.start-btn{
+  width:100%;border:0;border-radius:12px;margin-top:11px;padding:14px 18px;
+  background:var(--navy);color:#fff;font-weight:900;
+  transition:.2s;box-shadow:0 10px 24px rgba(11,37,69,.16);
+}
+.start-btn:hover{background:var(--navy2);transform:translateY(-1px)}
+.form-meta{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin-top:13px;color:var(--muted);font-size:.76rem;
+}
+.form-meta strong{color:var(--navy)}
+.date{font-variant-numeric:tabular-nums}
+.cover-foot{
+  text-align:center;margin-top:13px;color:#8793a0;font-size:.68rem;
+  letter-spacing:.05em;
 }
 
-.app{
-  width:min(100% - 28px,900px);
-  margin:auto;
-  padding:22px 0 60px;
+/* ===================== FASE 2 / QUESTIONÁRIO ===================== */
+.quiz-page{background:var(--paper);padding-bottom:60px}
+.quiz-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,246,248,.94);backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(11,37,69,.08);
 }
-
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  margin-bottom:18px;
+.quiz-header-inner{width:min(920px,100%);margin:auto;padding:12px 14px 10px}
+.quiz-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.quiz-title{
+  color:var(--navy);font-weight:950;letter-spacing:.045em;
+  font-size:1rem;text-transform:uppercase;
 }
-
-.brand{
-  font-weight:900;
-  letter-spacing:.08em;
-  font-size:.78rem;
-  color:var(--primary);
+.quiz-prof{color:#9a5262;font-weight:800;font-size:.73rem;margin-top:2px}
+.timer{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 10px;border-radius:10px;background:#fff;
+  border:1px solid var(--line);color:var(--navy);font-weight:900;
+  font-variant-numeric:tabular-nums;box-shadow:0 4px 14px rgba(11,37,69,.06);
 }
-
-.progress-text{
-  color:var(--muted);
-  font-size:.86rem;
-  font-weight:700;
+.timer.warning{color:#a84c5e;background:var(--rose-soft)}
+.timer-icon{width:8px;height:8px;border-radius:50%;background:var(--rose-deep);animation:timerPulse 1s infinite}
+@keyframes timerPulse{50%{opacity:.35}}
+.progress-row{display:flex;align-items:center;gap:9px;margin-top:9px}
+.progress{height:7px;flex:1;background:#e0e7ed;border-radius:999px;overflow:hidden}
+.progress i{
+  display:block;width:0;height:100%;border-radius:999px;
+  background:linear-gradient(90deg,var(--navy),var(--blue),var(--rose));
+  transition:width .25s;
 }
-
-.screen{display:none}
-.screen.active{display:block}
-
-.hero{
-  min-height:calc(100vh - 80px);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.progress-text{font-size:.7rem;color:var(--muted);font-weight:900;min-width:43px;text-align:right}
+.quiz-main{width:min(920px,100%);margin:auto;padding:4px 14px 20px}
+.study-intro{
+  margin:13px 0;padding:16px;border-radius:18px;
+  background:linear-gradient(120deg,#fff8dd,#fff2f3 60%,#edf5fa);
+  border:1px solid rgba(11,37,69,.06);
 }
-
-.login-card{
-  width:min(100%,680px);
-  background:rgba(255,255,255,.96);
-  border:1px solid var(--border);
-  border-radius:28px;
-  box-shadow:var(--shadow);
-  padding:34px;
-  text-align:center;
+.study-intro strong{color:var(--navy)}
+.study-intro p{margin:5px 0 0;color:#536578;font-size:.84rem;line-height:1.55}
+.question{
+  margin-top:13px;padding:19px;border-radius:20px;
+  background:#fff;border:1px solid var(--line);box-shadow:0 9px 28px rgba(11,37,69,.055);
 }
-
-.eyebrow{
-  display:inline-flex;
-  padding:7px 13px;
-  border-radius:999px;
-  background:#eff6ff;
-  color:var(--primary);
-  font-size:.75rem;
-  font-weight:900;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+.q-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.q-label{display:flex;align-items:center;gap:7px;color:var(--blue);font-size:.72rem;font-weight:950;letter-spacing:.06em}
+.q-number{
+  display:grid;place-items:center;width:30px;height:30px;border-radius:9px;
+  background:var(--yellow-soft);color:#6d570f;font-size:.76rem;
 }
-
-h1{
-  font-size:clamp(2rem,7vw,4rem);
-  line-height:1.03;
-  margin:18px 0 12px;
-  letter-spacing:-.045em;
+.q-topic{padding:6px 9px;border-radius:999px;background:var(--blue-soft);color:#1c527e;font-size:.67rem;font-weight:900}
+.q-title{margin:12px 0 10px;color:#192a3d;font-size:1rem;line-height:1.62;font-weight:750}
+.insight{
+  padding:12px 13px;border-left:4px solid var(--rose);
+  background:linear-gradient(135deg,#fff8df,#fff2f3);
+  border-radius:9px;margin-bottom:13px;
+  color:#4d5e70;font-size:.86rem;line-height:1.58;
 }
-
-h2{
-  font-size:clamp(1.35rem,4vw,2rem);
-  line-height:1.2;
-  margin:0 0 14px;
-}
-
-.subtitle{
-  color:var(--muted);
-  max-width:620px;
-  margin:0 auto 26px;
-}
-
-.input{
-  width:100%;
-  border:1px solid #cbd5e1;
-  border-radius:14px;
-  padding:15px 16px;
-  font-size:1rem;
-  outline:none;
-  color:var(--text);
-  background:white;
-  transition:.2s;
-}
-
-.input:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 4px rgba(37,99,235,.10);
-}
-
-.btn{
-  border:0;
-  border-radius:14px;
-  padding:13px 18px;
-  font-size:.98rem;
-  font-weight:800;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.btn-primary{
-  background:var(--primary);
-  color:white;
-}
-
-.btn-primary:hover{background:var(--primary-dark)}
-.btn-secondary{
-  background:var(--surface2);
-  color:var(--text);
-  border:1px solid var(--border);
-}
-
-.btn:disabled{
-  opacity:.45;
-  cursor:not-allowed;
-}
-
-.info-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-  gap:10px;
-  margin:25px 0;
-}
-
-.info{
-  text-align:left;
-  background:var(--surface);
-  border:1px solid var(--border);
-  padding:14px;
-  border-radius:14px;
-}
-
-.info strong{
-  display:block;
-  margin-bottom:2px;
-}
-
-.info span{
-  color:var(--muted);
-  font-size:.85rem;
-}
-
-.question-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:24px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-
-.question-head{
-  padding:23px 23px 15px;
-  border-bottom:1px solid var(--border);
-}
-
-.question-type{
-  display:inline-flex;
-  border-radius:999px;
-  padding:6px 10px;
-  font-size:.72rem;
-  font-weight:900;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  background:#eff6ff;
-  color:var(--primary);
-  margin-bottom:12px;
-}
-
-.question-number{
-  color:var(--muted);
-  font-size:.82rem;
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.question-text{
-  font-size:clamp(1.05rem,3vw,1.28rem);
-  line-height:1.5;
-  font-weight:800;
-  margin:0;
-}
-
-.options{
-  padding:18px 23px;
-  display:grid;
-  gap:10px;
-}
-
+.insight strong{color:var(--navy)}
+.options{display:grid;gap:8px}
 .option{
-  position:relative;
+  display:flex;align-items:flex-start;gap:9px;
+  border:1px solid var(--line);border-radius:11px;padding:11px 12px;
+  color:#29394a;background:#fff;font-size:.9rem;line-height:1.48;
+  cursor:pointer;transition:.16s;
 }
-
-.option input{
-  position:absolute;
-  opacity:0;
-  pointer-events:none;
+.option:hover{border-color:#9eb2c4;background:#fbfcfd}
+.option:has(input:checked){
+  border-color:var(--rose-deep);
+  background:linear-gradient(90deg,#fff0f1,#fffaf0);
+  box-shadow:0 4px 14px rgba(200,95,115,.10);
 }
-
-.option label{
-  display:block;
-  padding:14px 15px;
-  border:1px solid var(--border);
-  border-radius:14px;
-  cursor:pointer;
-  background:#fff;
-  transition:.18s;
+.option input{margin-top:3px;accent-color:var(--rose-deep)}
+.finish-wrap{margin-top:15px;padding:17px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.finish-btn{
+  width:100%;border:0;border-radius:13px;padding:15px;
+  background:var(--navy);color:#fff;font-weight:950;font-size:.98rem;
 }
-
-.option label:hover{
-  border-color:#93c5fd;
-  background:#f8fbff;
+.finish-note{text-align:center;color:var(--muted);font-size:.74rem;margin:9px 0 0}
+.result{
+  display:none;margin-top:15px;padding:24px;border-radius:22px;
+  background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);
 }
-
-.option input:checked + label{
-  border-color:var(--primary);
-  background:#eff6ff;
-  box-shadow:0 0 0 2px rgba(37,99,235,.08);
+.result.show{display:block}
+.result-title{
+  margin:0;text-align:center;color:var(--navy);
+  font-family:Georgia,"Times New Roman",serif;font-size:2.15rem;
 }
-
-.option-letter{
-  display:inline-flex;
-  width:28px;
-  height:28px;
-  align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  background:var(--surface2);
-  margin-right:9px;
-  font-weight:900;
-  font-size:.85rem;
+.score{text-align:center;color:var(--navy);font-size:3.4rem;font-weight:950;margin:10px 0 0}
+.result-sub{text-align:center;color:var(--muted);margin:3px 0}
+.key{
+  margin-top:17px;padding-top:15px;border-top:1px solid var(--line);
+  color:#586a7b;font-size:.84rem;line-height:1.8;
 }
-
-.option input:checked + label .option-letter{
-  background:var(--primary);
-  color:white;
-}
-
-.navigation{
-  padding:17px 23px 23px;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  border-top:1px solid var(--border);
-}
-
-.hint{
-  color:var(--muted);
-  font-size:.82rem;
-  margin-top:10px;
-  text-align:center;
-}
-
-.final-warning{
-  background:#fff7ed;
-  border:1px solid #fed7aa;
-  color:#9a3412;
-  padding:14px;
-  border-radius:14px;
-  margin-bottom:15px;
-  font-size:.9rem;
-}
-
-.result-card{
-  background:white;
-  border:1px solid var(--border);
-  border-radius:28px;
-  box-shadow:var(--shadow);
-  padding:28px;
-}
-
-.result-score{
-  text-align:center;
-  padding:25px 10px;
-}
-
-.score-number{
-  font-size:clamp(3.5rem,15vw,6rem);
-  line-height:1;
-  font-weight:950;
-  color:var(--primary);
-}
-
-.score-label{
-  color:var(--muted);
-  font-weight:800;
-}
-
-.result-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:22px 0;
-}
-
-.result-box{
-  padding:16px 10px;
-  border-radius:15px;
-  text-align:center;
-  background:var(--surface);
-  border:1px solid var(--border);
-}
-
-.result-box strong{
-  display:block;
-  font-size:1.5rem;
-}
-
-.correct{color:var(--green)}
-.wrong{color:var(--red)}
-.unanswered{color:var(--yellow)}
-
-.result-list{
-  display:grid;
-  gap:9px;
-  margin-top:20px;
-}
-
-.result-item{
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:12px 14px;
-  background:var(--surface);
-}
-
-.result-item.ok{border-left:4px solid var(--green)}
-.result-item.bad{border-left:4px solid var(--red)}
-
-.small{
-  color:var(--muted);
-  font-size:.83rem;
-}
-
-.footer{
-  text-align:center;
-  margin-top:25px;
-  color:var(--muted);
-  font-size:.78rem;
-}
-
+.key strong{color:var(--navy)}
 @media(max-width:600px){
-  .app{width:min(100% - 18px,900px)}
-  .login-card{padding:24px 18px;border-radius:22px}
-  .question-head,.options{padding-left:16px;padding-right:16px}
-  .navigation{padding:14px 16px 17px}
-  .btn{padding:12px 14px}
+  .cover-page{padding:9px}
+  .cover-wrap{min-height:calc(100vh - 18px)}
+  .cover-card{border-radius:23px}
+  .cover-top{min-height:430px;padding:25px 17px}
+  .cover-top:after{right:15px;top:20px;width:115px;height:115px;border-width:22px}
+  .cover-top:before{right:47px;top:50px;width:60px;height:60px}
+  .subject{font-size:clamp(3rem,16vw,4.7rem);margin-top:38px}
+  .professor-name{font-size:2.25rem}
+  .cover-form{padding:19px 13px 22px}
+  .quiz-header-inner,.quiz-main{padding-left:10px;padding-right:10px}
+  .question{padding:15px;border-radius:17px}
+  .q-title{font-size:.95rem}
+  .insight{font-size:.82rem}
+  .option{font-size:.87rem;padding:10px}
 }
 </style>
 </head>
-
 <body>
 
-<div class="app">
+<!-- ===================== FASE 1: CAPA + FORMULÁRIO ===================== -->
+<section id="coverPage" class="page active cover-page">
+  <div class="cover-wrap">
+    <div class="cover-card">
+      <div class="cover-top">
+        <div class="cover-content">
+          <div>
+            <span class="institution">UNINASSAU • ESTUDOS</span>
+            <span class="live"><i class="live-dot"></i> LIVE</span>
+          </div>
 
-  <!-- TELA INICIAL -->
-  <section id="loginScreen" class="screen active hero">
-    <div class="login-card">
-      <span class="eyebrow">Modo Mythos+ Ultra • Simulado Interativo</span>
+          <h1 class="subject">Psicologia<br>Social</h1>
+          <div class="subject-rule"></div>
 
-      <h1>Revisão de Prova<br>de Genética</h1>
+          <p class="cover-desc">
+            <strong>Questionário de estudo • 20 questões</strong><br>
+            Uma experiência auxiliar de revisão para compreender conceitos, relações sociais,
+            processos cognitivos e diferentes perspectivas da Psicologia Social.
+          </p>
 
-      <p class="subtitle">
-        <strong>Professora Michelle Diana</strong><br>
-        Genética Molecular • Síntese Proteica • Mutações • Genética Comportamental •
-        Epigenética • Gene × Ambiente
+          <div class="professor">
+            <span class="professor-label">PROFESSOR</span>
+            <span class="professor-name">Milton</span>
+          </div>
+
+          <div class="student-ref">Estudos • Tiago Aragão</div>
+        </div>
+      </div>
+
+      <div class="cover-form">
+        <div class="form-inner">
+          <div class="form-title">Identificação do aluno</div>
+          <div class="name-orbit">
+            <div class="name-inner">
+              <input id="studentName" class="name-input" type="text" autocomplete="name"
+                     placeholder="Digite seu nome completo" aria-label="Nome do aluno">
+              <button class="start-btn" type="button" onclick="beginQuestionnaire()">
+                Iniciar questionário →
+              </button>
+            </div>
+          </div>
+
+          <div class="form-meta">
+            <span><strong>20 questões</strong> • 0,5 ponto cada • total 10,0</span>
+            <span class="date">Data: 08/10/2026</span>
+          </div>
+          <div class="cover-foot">Experiência de estudo • Psicologia Social • Professor Milton</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FASE 2: QUESTIONÁRIO ===================== -->
+<section id="quizPage" class="page quiz-page">
+  <header class="quiz-header">
+    <div class="quiz-header-inner">
+      <div class="quiz-title-row">
+        <div>
+          <div class="quiz-title">Psicologia Social</div>
+          <div class="quiz-prof">Professor Milton • Questionário de estudo</div>
+        </div>
+        <div id="timer" class="timer" aria-label="Tempo restante">
+          <i class="timer-icon"></i><span id="timerText">30:00</span>
+        </div>
+      </div>
+      <div class="progress-row">
+        <div class="progress"><i id="progressBar"></i></div>
+        <div class="progress-text" id="progressText">0/20</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="quiz-main">
+    <div class="study-intro">
+      <strong>Como estudar enquanto responde</strong>
+      <p>
+        Leia primeiro o <em>Insight de estudo</em>. Ele recupera o conceito central da matéria
+        antes da pergunta. Depois, interprete a situação, identifique a relação conceitual e
+        marque a alternativa mais adequada. O objetivo é revisar e aprender, não apenas testar memória.
       </p>
+    </div>
 
-      <div class="info-grid">
-        <div class="info">
-          <strong>15 questões</strong>
-          <span>Alternativas A–E</span>
+    <form id="quizForm">
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">01</span> FUNDAMENTOS</div><span class="q-topic">Psicologia Social</span></div>
+        <div class="q-title">A Psicologia Social procura compreender o comportamento humano considerando que pensamentos, emoções e ações não acontecem completamente separados da vida coletiva. A partir dessa perspectiva, qual alternativa apresenta de modo mais adequado o objeto de estudo da área?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O material apresenta a Psicologia Social como o estudo de pensamentos, emoções e comportamentos influenciados pela presença real, imaginada ou simbólica de outras pessoas. O sujeito é analisado em interação com processos sociais e coletivos.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q1" value="A">A) O funcionamento individual da mente, sem considerar relações, grupos ou instituições.</label>
+          <label class="option"><input type="radio" name="q1" value="B">B) A relação entre indivíduo e mundo social, incluindo percepção do outro, contexto, normas, valores e processos coletivos.</label>
+          <label class="option"><input type="radio" name="q1" value="C">C) Exclusivamente as estruturas econômicas que determinam o comportamento humano.</label>
+          <label class="option"><input type="radio" name="q1" value="D">D) Somente respostas observáveis, sem considerar significados ou interpretações.</label>
+          <label class="option"><input type="radio" name="q1" value="E">E) Apenas processos biológicos relacionados às emoções sociais.</label>
         </div>
-        <div class="info">
-          <strong>Uma por vez</strong>
-          <span>Sem revelar respostas</span>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">02</span> EUROCENTRISMO</div><span class="q-topic">Perspectiva crítica</span></div>
+        <div class="q-title">Ao analisar a história da Psicologia, é possível identificar modelos construídos em determinados contextos culturais que foram posteriormente apresentados como explicações gerais sobre a mente humana. Qual situação expressa melhor a crítica à perspectiva eurocêntrica apresentada no material?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> A crítica não é simplesmente sobre a origem geográfica de uma teoria. O ponto central é a universalização de experiências europeias e a transformação de padrões culturais específicos em supostos modelos neutros e universais.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q2" value="A">A) Reconhecer que diferentes povos constroem formas próprias de compreender a subjetividade.</label>
+          <label class="option"><input type="radio" name="q2" value="B">B) Investigar como cultura e história influenciam a experiência psicológica.</label>
+          <label class="option"><input type="radio" name="q2" value="C">C) Tomar a experiência do homem branco, europeu e urbano como referência principal para definir padrões universais.</label>
+          <label class="option"><input type="radio" name="q2" value="D">D) Valorizar saberes comunitários e populares na compreensão do sujeito.</label>
+          <label class="option"><input type="radio" name="q2" value="E">E) Relacionar subjetividade, território e relações de poder.</label>
         </div>
-        <div class="info">
-          <strong>Resultado final</strong>
-          <span>Correção automática</span>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">03</span> EUROCENTRISMO</div><span class="q-topic">Cultura e subjetividade</span></div>
+        <div class="q-title">Imagine uma teoria que considera a independência individual como principal indicador de maturidade e aplica esse critério igualmente a comunidades nas quais cuidado compartilhado, vínculos familiares e interdependência possuem grande valor. Qual problema pode surgir dessa aplicação?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O material usa a própria noção de maturidade como exemplo: um modelo centrado na independência individual pode falhar quando aplicado a sociedades em que vínculos coletivos, cuidado compartilhado e interdependência são centrais.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q3" value="A">A) A teoria passa a ser necessariamente uma explicação externa do comportamento.</label>
+          <label class="option"><input type="radio" name="q3" value="B">B) O modelo pode ignorar diferenças culturais e desvalorizar formas coletivas e interdependentes de organização da vida.</label>
+          <label class="option"><input type="radio" name="q3" value="C">C) A teoria deixa de utilizar qualquer conceito psicológico.</label>
+          <label class="option"><input type="radio" name="q3" value="D">D) O modelo passa automaticamente a representar a Psicologia Latino-Americana.</label>
+          <label class="option"><input type="radio" name="q3" value="E">E) A teoria elimina a influência do indivíduo sobre a sociedade.</label>
         </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">04</span> ATRIBUIÇÃO CAUSAL</div><span class="q-topic">Psicologia norte-americana</span></div>
+        <div class="q-title">Na Psicologia Social norte-americana, a atribuição causal aparece como uma forma de compreender como as pessoas procuram explicar acontecimentos e comportamentos. Quando alguém observa uma ação e pergunta “qual foi a causa disso?”, qual processo está sendo realizado?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> A atribuição causal é o processo de interpretar as causas de um comportamento ou acontecimento. O material utiliza a ideia de pessoas como “cientistas ingênuos”, construindo explicações sobre por que os eventos acontecem.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q4" value="A">A) Atribuição causal.</label>
+          <label class="option"><input type="radio" name="q4" value="B">B) Esquema de evento.</label>
+          <label class="option"><input type="radio" name="q4" value="C">C) Heurística de ancoragem.</label>
+          <label class="option"><input type="radio" name="q4" value="D">D) Estereótipo social.</label>
+          <label class="option"><input type="radio" name="q4" value="E">E) Estrutura sociológica.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">05</span> ATRIBUIÇÃO</div><span class="q-topic">Interna × externa</span></div>
+        <div class="q-title">Um estudante apresenta baixo desempenho em uma avaliação. Uma pessoa afirma que ele “é preguiçoso”; outra considera que a prova estava muito difícil e que ele enfrentava problemas em casa. Considerando a teoria da atribuição, como as explicações podem ser classificadas?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> Atribuição interna relaciona o comportamento a características da própria pessoa, como capacidade ou personalidade. Atribuição externa busca a explicação no ambiente, na situação ou nas circunstâncias.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q5" value="A">A) Externa e interna.</label>
+          <label class="option"><input type="radio" name="q5" value="B">B) Interna e externa.</label>
+          <label class="option"><input type="radio" name="q5" value="C">C) Externa e externa.</label>
+          <label class="option"><input type="radio" name="q5" value="D">D) Interna e interna.</label>
+          <label class="option"><input type="radio" name="q5" value="E">E) Cognitiva e sociológica.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">06</span> ATRIBUIÇÃO</div><span class="q-topic">Covariação</span></div>
+        <div class="q-title">Uma pesquisadora observa que determinada pessoa apresenta um comportamento. Para compreender sua causa, verifica se outras pessoas também agem daquela forma, se o comportamento ocorre somente naquela situação e se ele se repete ao longo do tempo. Qual modelo de atribuição está sendo utilizado?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O modelo da covariação utiliza três informações: <strong>consenso</strong> — outras pessoas fazem?; <strong>distintividade</strong> — acontece somente nessa situação?; e <strong>consistência</strong> — acontece sempre ou apenas às vezes?</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q6" value="A">A) Modelo da covariação.</label>
+          <label class="option"><input type="radio" name="q6" value="B">B) Modelo de estereotipagem.</label>
+          <label class="option"><input type="radio" name="q6" value="C">C) Modelo de esquema de self.</label>
+          <label class="option"><input type="radio" name="q6" value="D">D) Modelo de ancoragem.</label>
+          <label class="option"><input type="radio" name="q6" value="E">E) Modelo de atitude comportamental.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">07</span> VIESES DE ATRIBUIÇÃO</div><span class="q-topic">Erro fundamental</span></div>
+        <div class="q-title">Um professor observa um aluno chegando atrasado e conclui imediatamente que ele é “irresponsável”, sem investigar as condições de transporte, acontecimentos familiares ou outras circunstâncias. Qual viés aparece de forma mais direta nessa interpretação?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O erro fundamental de atribuição é a tendência de explicar o comportamento dos outros por causas internas e subestimar a influência do contexto e das circunstâncias.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q7" value="A">A) Viés autosserviço.</label>
+          <label class="option"><input type="radio" name="q7" value="B">B) Viés ator-observador.</label>
+          <label class="option"><input type="radio" name="q7" value="C">C) Erro fundamental de atribuição.</label>
+          <label class="option"><input type="radio" name="q7" value="D">D) Heurística de disponibilidade.</label>
+          <label class="option"><input type="radio" name="q7" value="E">E) Esquema de evento.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">08</span> VIESES DE ATRIBUIÇÃO</div><span class="q-topic">Ator-observador</span></div>
+        <div class="q-title">Uma pessoa explica seu próprio erro dizendo que a situação era difícil, mas, quando outra pessoa comete o mesmo erro, afirma que ela “não tem competência”. Qual padrão de interpretação está sendo exemplificado?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> No viés ator-observador, o próprio comportamento tende a ser explicado pela situação, enquanto o comportamento de outras pessoas tende a ser explicado por características pessoais.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q8" value="A">A) Viés ator-observador.</label>
+          <label class="option"><input type="radio" name="q8" value="B">B) Viés autosserviço.</label>
+          <label class="option"><input type="radio" name="q8" value="C">C) Erro fundamental exclusivamente.</label>
+          <label class="option"><input type="radio" name="q8" value="D">D) Heurística de representatividade.</label>
+          <label class="option"><input type="radio" name="q8" value="E">E) Esquema de pessoa.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">09</span> VIESES DE ATRIBUIÇÃO</div><span class="q-topic">Autosserviço</span></div>
+        <div class="q-title">Após receber uma boa nota, um estudante afirma que o resultado ocorreu por sua capacidade e esforço. Quando recebe uma nota baixa, atribui o resultado à dificuldade da prova e às condições externas. Qual viés está representado?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> No viés autosserviço, sucessos tendem a ser relacionados a qualidades pessoais, enquanto fracassos tendem a ser atribuídos a fatores externos. É uma distorção recorrente na interpretação das próprias ações.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q9" value="A">A) Viés ator-observador.</label>
+          <label class="option"><input type="radio" name="q9" value="B">B) Viés autosserviço.</label>
+          <label class="option"><input type="radio" name="q9" value="C">C) Erro fundamental de atribuição.</label>
+          <label class="option"><input type="radio" name="q9" value="D">D) Heurística de disponibilidade.</label>
+          <label class="option"><input type="radio" name="q9" value="E">E) Distintividade.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">10</span> PSICOLOGIA LATINO-AMERICANA</div><span class="q-topic">História e contexto</span></div>
+        <div class="q-title">Uma análise sobre sofrimento psicológico considera não apenas características individuais, mas também precarização do trabalho, violência urbana, racismo estrutural e exclusão social. Qual perspectiva apresentada no material se aproxima dessa forma de compreender a subjetividade?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> A Psicologia Latino-Americana surge como crítica à importação acrítica de modelos europeus e norte-americanos e enfatiza história, desigualdade, colonialismo, racismo, pobreza, violência estrutural, cultura popular e saberes locais.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q10" value="A">A) Perspectiva que explica sofrimento apenas por traços individuais.</label>
+          <label class="option"><input type="radio" name="q10" value="B">B) Psicologia Latino-Americana.</label>
+          <label class="option"><input type="radio" name="q10" value="C">C) Perspectiva exclusivamente experimental.</label>
+          <label class="option"><input type="radio" name="q10" value="D">D) Perspectiva que elimina a dimensão histórica.</label>
+          <label class="option"><input type="radio" name="q10" value="E">E) Perspectiva que desconsidera desigualdade e território.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">11</span> SOCIOLÓGICA × PSICOSSOCIAL</div><span class="q-topic">Sujeito e estrutura</span></div>
+        <div class="q-title">Duas pesquisas estudam o desemprego. A primeira analisa classes sociais, instituições, normas e desigualdades estruturais. A segunda investiga como a experiência do desemprego atravessa a subjetividade, os vínculos e a interpretação que o sujeito faz de sua realidade. A classificação correta é:</div>
+        <div class="insight"><strong>Insight de estudo:</strong> A diferença central apresentada no material é: a Sociologia observa mais a estrutura social; a Psicossociologia observa a experiência subjetiva em relação com essa estrutura.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q11" value="A">A) Psicossocial e sociológica.</label>
+          <label class="option"><input type="radio" name="q11" value="B">B) Sociológica e psicossocial.</label>
+          <label class="option"><input type="radio" name="q11" value="C">C) Cognitivista e experimental.</label>
+          <label class="option"><input type="radio" name="q11" value="D">D) Eurocêntrica e latino-americana.</label>
+          <label class="option"><input type="radio" name="q11" value="E">E) Sociológica e exclusivamente biológica.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">12</span> COGNITIVISMO E EXPERIMENTAÇÃO</div><span class="q-topic">Processos mentais</span></div>
+        <div class="q-title">Na Psicologia Social, o cognitivismo contribuiu para investigar processos como percepção, memória, atenção, interpretação e tomada de decisão. A experimentação, por sua vez, permitiu testar hipóteses em condições controladas. Qual alternativa apresenta corretamente essa relação?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O material aponta contribuições da experimentação para estudar atitudes, conformidade, obediência, percepção social, julgamento e memória social, mas também ressalta limites quando fenômenos complexos são simplificados ou retirados de seu contexto histórico e cultural.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q12" value="A">A) O cognitivismo rejeita o estudo dos processos mentais.</label>
+          <label class="option"><input type="radio" name="q12" value="B">B) A experimentação impede o estudo do comportamento social.</label>
+          <label class="option"><input type="radio" name="q12" value="C">C) O cognitivismo estuda processamento de informações sociais, enquanto a experimentação testa hipóteses sob condições controladas.</label>
+          <label class="option"><input type="radio" name="q12" value="D">D) A experimentação reproduz perfeitamente toda situação social real.</label>
+          <label class="option"><input type="radio" name="q12" value="E">E) O cognitivismo se limita às estruturas econômicas da sociedade.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">13</span> O OUTRO E O MEIO SOCIAL</div><span class="q-topic">Subjetividade relacional</span></div>
+        <div class="q-title">Em uma sala de aula, um estudante modifica sua maneira de participar porque percebe expectativas dos colegas e do professor. Ele passa a avaliar como será reconhecido, comparado ou avaliado pelos demais. O exemplo demonstra que:</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O material afirma que o “outro” não é apenas uma presença física: representa norma, expectativa, comparação, reconhecimento, ameaça, pertencimento e alteridade. A ideia central é que a subjetividade é relacional.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q13" value="A">A) O outro possui apenas uma função física no ambiente.</label>
+          <label class="option"><input type="radio" name="q13" value="B">B) A experiência subjetiva é influenciada pelas relações com o outro e com o meio social.</label>
+          <label class="option"><input type="radio" name="q13" value="C">C) A subjetividade se forma sem qualquer relação com o ambiente.</label>
+          <label class="option"><input type="radio" name="q13" value="D">D) O comportamento social depende apenas de características internas.</label>
+          <label class="option"><input type="radio" name="q13" value="E">E) A identidade é completamente independente de vínculos e pertencimentos.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">14</span> COGNIÇÃO SOCIAL</div><span class="q-topic">Percepção e julgamento</span></div>
+        <div class="q-title">Ao encontrar uma situação social nova, uma pessoa precisa perceber quem está presente, interpretar sinais, lembrar experiências anteriores, formular julgamentos e antecipar possíveis comportamentos. O conjunto desses processos é estudado pela:</div>
+        <div class="insight"><strong>Insight de estudo:</strong> Cognição social é o campo que estuda como percebemos, interpretamos, lembramos e usamos informações sobre nós mesmos e sobre o mundo social para compreender pessoas, situações, comportamentos e respostas possíveis.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q14" value="A">A) Cognição social.</label>
+          <label class="option"><input type="radio" name="q14" value="B">B) Atribuição externa exclusivamente.</label>
+          <label class="option"><input type="radio" name="q14" value="C">C) Perspectiva sociológica exclusivamente.</label>
+          <label class="option"><input type="radio" name="q14" value="D">D) Psicologia eurocêntrica.</label>
+          <label class="option"><input type="radio" name="q14" value="E">E) Distintividade.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">15</span> MEIO SOCIAL COLETIVO</div><span class="q-topic">Cultura e cognição</span></div>
+        <div class="q-title">Uma pessoa considera determinado comportamento “normal” porque cresceu em um ambiente no qual família, escola, mídia e grupos de convivência reforçaram continuamente essa interpretação. Qual conclusão está mais de acordo com o conceito de cognição social apresentado?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> A cognição social não acontece no vazio. Experiência, cultura, valores e memória influenciam interpretações, enquanto o meio coletivo fornece esquemas, normas e representações compartilhadas.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q15" value="A">A) As interpretações sociais são completamente neutras.</label>
+          <label class="option"><input type="radio" name="q15" value="B">B) O meio social coletivo participa da construção das referências utilizadas para interpretar a realidade.</label>
+          <label class="option"><input type="radio" name="q15" value="C">C) A cultura não participa da cognição social.</label>
+          <label class="option"><input type="radio" name="q15" value="D">D) Somente fatores biológicos determinam julgamentos sociais.</label>
+          <label class="option"><input type="radio" name="q15" value="E">E) A cognição social acontece independentemente da memória e da experiência.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">16</span> ESTEREÓTIPOS</div><span class="q-topic">Generalização social</span></div>
+        <div class="q-title">Uma pessoa generaliza características para todos os membros de determinado grupo e utiliza essa generalização para interpretar rapidamente novas pessoas. O mecanismo pode simplificar o processamento de informações, mas também produzir distorções e injustiças. Esse fenômeno corresponde a:</div>
+        <div class="insight"><strong>Insight de estudo:</strong> O material define estereótipos como crenças generalizadas sobre grupos. Eles podem ser aprendidos por repetição social, são difíceis de mudar e podem alimentar preconceito e discriminação.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q16" value="A">A) Esquema de evento.</label>
+          <label class="option"><input type="radio" name="q16" value="B">B) Atribuição externa.</label>
+          <label class="option"><input type="radio" name="q16" value="C">C) Estereótipo.</label>
+          <label class="option"><input type="radio" name="q16" value="D">D) Viés autosserviço.</label>
+          <label class="option"><input type="radio" name="q16" value="E">E) Consistência.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">17</span> ATITUDES</div><span class="q-topic">Cognitivo • afetivo • comportamental</span></div>
+        <div class="q-title">Uma estudante acredita que determinada política educacional é importante, sente-se favorável a ela e demonstra intenção de participar de ações relacionadas à sua implementação. Considerando os componentes das atitudes, qual alternativa está correta?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> Atitudes são avaliações relativamente estáveis sobre algo, alguém ou algum grupo. No material, elas envolvem três componentes: cognitivo, afetivo e comportamental.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q17" value="A">A) Cognitivo = crenças e ideias; afetivo = sentimentos; comportamental = tendência à ação.</label>
+          <label class="option"><input type="radio" name="q17" value="B">B) Cognitivo = sentimentos; afetivo = ideias; comportamental = memória.</label>
+          <label class="option"><input type="radio" name="q17" value="C">C) Cognitivo = ação; afetivo = inteligência; comportamental = crença.</label>
+          <label class="option"><input type="radio" name="q17" value="D">D) Cognitivo = instituição; afetivo = classe social; comportamental = cultura.</label>
+          <label class="option"><input type="radio" name="q17" value="E">E) Cognitivo = comportamento; afetivo = norma; comportamental = percepção.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">18</span> ESQUEMAS COGNITIVOS</div><span class="q-topic">Mapas mentais</span></div>
+        <div class="q-title">Ao conhecer alguém que exerce determinada profissão, uma pessoa imediatamente recupera expectativas sobre funções, comportamentos e formas de atuação associadas àquele papel. Qual conceito explica essa organização mental de expectativas?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> Esquemas cognitivos são estruturas ou “mapas mentais” que organizam experiências e expectativas. O material apresenta esquemas de self, pessoa, papel social e evento.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q18" value="A">A) Viés autosserviço.</label>
+          <label class="option"><input type="radio" name="q18" value="B">B) Esquema cognitivo, especificamente relacionado a papel social.</label>
+          <label class="option"><input type="radio" name="q18" value="C">C) Atribuição externa.</label>
+          <label class="option"><input type="radio" name="q18" value="D">D) Erro fundamental de atribuição.</label>
+          <label class="option"><input type="radio" name="q18" value="E">E) Distintividade.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">19</span> HEURÍSTICAS</div><span class="q-topic">Ancoragem</span></div>
+        <div class="q-title">Durante uma decisão, uma pessoa recebe inicialmente uma informação numérica e, mesmo após receber outros dados, continua ajustando seu julgamento a partir daquele primeiro valor. Qual heurística está mais diretamente envolvida?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> Heurísticas são atalhos mentais usados para decidir rapidamente em situações complexas. Na ancoragem, partimos de uma informação inicial e realizamos ajustes posteriores que podem permanecer próximos da referência original.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q19" value="A">A) Disponibilidade.</label>
+          <label class="option"><input type="radio" name="q19" value="B">B) Representatividade.</label>
+          <label class="option"><input type="radio" name="q19" value="C">C) Ancoragem.</label>
+          <label class="option"><input type="radio" name="q19" value="D">D) Consenso.</label>
+          <label class="option"><input type="radio" name="q19" value="E">E) Distintividade.</label>
+        </div>
+      </article>
+
+      <article class="question">
+        <div class="q-head"><div class="q-label"><span class="q-number">20</span> HEURÍSTICAS</div><span class="q-topic">Disponibilidade × representatividade</span></div>
+        <div class="q-title">Considere duas situações. Na primeira, uma pessoa considera um acontecimento muito frequente porque exemplos semelhantes surgem facilmente em sua memória. Na segunda, alguém julga outra pessoa pela semelhança com um protótipo conhecido. Quais heurísticas aparecem, respectivamente?</div>
+        <div class="insight"><strong>Insight de estudo:</strong> Disponibilidade é julgar pela facilidade com que exemplos vêm à mente. Representatividade é julgar pela semelhança com um protótipo. Ambas economizam esforço, mas podem gerar erros sistemáticos.</div>
+        <div class="options">
+          <label class="option"><input type="radio" name="q20" value="A">A) Ancoragem e disponibilidade.</label>
+          <label class="option"><input type="radio" name="q20" value="B">B) Representatividade e ancoragem.</label>
+          <label class="option"><input type="radio" name="q20" value="C">C) Disponibilidade e representatividade.</label>
+          <label class="option"><input type="radio" name="q20" value="D">D) Consenso e consistência.</label>
+          <label class="option"><input type="radio" name="q20" value="E">E) Distintividade e consenso.</label>
+        </div>
+      </article>
+
+      <div class="finish-wrap">
+        <button class="finish-btn" type="button" onclick="finishQuiz()">Receber resultado final</button>
+        <p class="finish-note">Ao finalizar, o cronômetro é encerrado e o resultado será apresentado.</p>
       </div>
+    </form>
 
-      <label for="studentName" style="display:block;text-align:left;font-weight:800;margin-bottom:7px">
-        Nome do aluno
-      </label>
-
-      <input
-        id="studentName"
-        class="input"
-        type="text"
-        autocomplete="name"
-        placeholder="Digite seu nome"
-        maxlength="80"
-      >
-
-      <button id="startBtn" class="btn btn-primary" style="width:100%;margin-top:13px">
-        Entrar e iniciar revisão
-      </button>
-
-      <p class="hint">
-        Suas respostas serão corrigidas somente quando você clicar em
-        <strong>Receber Gabarito</strong> na última questão.
-      </p>
-    </div>
-  </section>
-
-
-  <!-- TELA DA PROVA -->
-  <section id="quizScreen" class="screen">
-
-    <div class="topbar">
-      <div class="brand">MYTHOS+ ULTRA • GENÉTICA</div>
-      <div id="progressText" class="progress-text">Questão 1 de 15</div>
-    </div>
-
-    <div id="questionContainer"></div>
-
-    <div class="footer">
-      Revisão de Prova de Genética — Professora Michelle Diana
-    </div>
-  </section>
-
-
-  <!-- RESULTADO -->
-  <section id="resultScreen" class="screen">
-
-    <div class="topbar">
-      <div class="brand">RESULTADO FINAL</div>
-      <div class="progress-text">Prova concluída</div>
-    </div>
-
-    <div class="result-card">
-
-      <div class="result-score">
-        <div id="studentResultName" class="small"></div>
-        <div id="scoreNumber" class="score-number">0%</div>
-        <div class="score-label">aproveitamento</div>
+    <section id="result" class="result">
+      <h2 class="result-title">Resultado final</h2>
+      <div id="score" class="score">0,0 / 10,0</div>
+      <p id="resultSub" class="result-sub"></p>
+      <div class="key">
+        <strong>GABARITO — LIBERADO APÓS A FINALIZAÇÃO</strong><br>
+        01-B • 02-C • 03-B • 04-A • 05-B • 06-A • 07-C • 08-A • 09-B • 10-B<br>
+        11-B • 12-C • 13-B • 14-A • 15-B • 16-C • 17-A • 18-B • 19-C • 20-C
       </div>
-
-      <div class="result-grid">
-        <div class="result-box">
-          <strong id="correctCount" class="correct">0</strong>
-          <span>Certas</span>
-        </div>
-
-        <div class="result-box">
-          <strong id="wrongCount" class="wrong">0</strong>
-          <span>Erradas</span>
-        </div>
-
-        <div class="result-box">
-          <strong id="unansweredCount" class="unanswered">0</strong>
-          <span>Não respondidas</span>
-        </div>
-      </div>
-
-      <div id="performanceMessage"
-           style="padding:15px;border-radius:14px;background:#eff6ff;color:#1e40af;font-weight:700">
-      </div>
-
-      <h2 style="margin-top:28px">Correção da prova</h2>
-
-      <p class="small">
-        Abaixo está a leitura individual de todas as questões. O sistema compara
-        exatamente a alternativa marcada com o gabarito programado.
-      </p>
-
-      <div id="resultList" class="result-list"></div>
-
-      <button class="btn btn-primary" style="width:100%;margin-top:25px" onclick="restartQuiz()">
-        Refazer a prova
-      </button>
-
-    </div>
-
-    <div class="footer">
-      Revisão de Prova de Genética — Professora Michelle Diana
-    </div>
-  </section>
-
-</div>
-
+    </section>
+  </main>
+</section>
 
 <script>
+const answerKey={
+  q1:"B",q2:"C",q3:"B",q4:"A",q5:"B",
+  q6:"A",q7:"C",q8:"A",q9:"B",q10:"B",
+  q11:"B",q12:"C",q13:"B",q14:"A",q15:"B",
+  q16:"C",q17:"A",q18:"B",q19:"C",q20:"C"
+};
 
-const questions = [
+let timerSeconds=30*60;
+let timerId=null;
+let finished=false;
 
-{
- type:"AFIRMAÇÃO CORRETA",
- text:"Sobre o fluxo da informação genética em células eucarióticas, assinale a alternativa CORRETA.",
- options:[
- "A) A tradução converte DNA diretamente em proteína.",
- "B) A replicação produz RNAm a partir do DNA.",
- "C) A transcrição utiliza DNA como molde para a síntese de RNA.",
- "D) O RNAt realiza a duplicação do genoma.",
- "E) A RNA polimerase realiza a tradução."
- ],
- answer:"C"
-},
-
-{
- type:"NEGATIVA",
- text:"Sobre a síntese proteica, todas as afirmações estão corretas, EXCETO:",
- options:[
- "A) O RNAm contém códons.",
- "B) O RNAt transporta aminoácidos.",
- "C) O ribossomo participa da formação das ligações peptídicas.",
- "D) A tradução ocorre nos ribossomos.",
- "E) O DNA nuclear precisa abandonar o núcleo para ser lido diretamente pelo ribossomo."
- ],
- answer:"E"
-},
-
-{
- type:"APLICAÇÃO",
- text:"Considere a fita molde de DNA: TAC GGA. Qual sequência de RNA será sintetizada?",
- options:[
- "A) TAC GGA",
- "B) AUG CCU",
- "C) ATG CCT",
- "D) UAC GGA",
- "E) AUG GGA"
- ],
- answer:"B"
-},
-
-{
- type:"CONCEITUAL",
- text:"A principal função do splicing no processamento do pré-RNAm é:",
- options:[
- "A) duplicar o DNA.",
- "B) converter uracila em timina.",
- "C) remover íntrons e unir éxons.",
- "D) transportar aminoácidos.",
- "E) provocar mutações no RNAm."
- ],
- answer:"C"
-},
-
-{
- type:"EXCLUSÃO",
- text:"São componentes diretamente relacionados à tradução, EXCETO:",
- options:[
- "A) RNAm.",
- "B) RNAt.",
- "C) Ribossomo.",
- "D) Aminoácidos.",
- "E) DNA polimerase."
- ],
- answer:"E"
-},
-
-{
- type:"CÓDIGO GENÉTICO",
- text:"Qual alternativa apresenta corretamente o códon de iniciação e os três códons de terminação?",
- options:[
- "A) AUG / UAA, UAG e UGA.",
- "B) UAA / AUG, UAG e UGA.",
- "C) ATG / TAA, TAG e TGA.",
- "D) AUG / AAA, CCC e GGG.",
- "E) UAC / AUG, UAA e UGA."
- ],
- answer:"A"
-},
-
-{
- type:"MUTAÇÕES",
- text:"Uma inserção de apenas um nucleotídeo dentro da região codificante de um gene tende a ser especialmente prejudicial porque pode:",
- options:[
- "A) duplicar automaticamente todo o cromossomo.",
- "B) transformar RNA em DNA.",
- "C) deslocar o quadro de leitura dos códons.",
- "D) eliminar todas as histonas celulares.",
- "E) impedir definitivamente qualquer replicação celular."
- ],
- answer:"C"
-},
-
-{
- type:"NEGATIVA / PEGADINHA",
- text:"Sobre mutações, assinale a alternativa INCORRETA.",
- options:[
- "A) Uma substituição pode ser silenciosa.",
- "B) Uma substituição pode gerar uma mutação missense.",
- "C) Uma substituição pode criar um stop prematuro.",
- "D) Toda mutação obrigatoriamente causa doença.",
- "E) Inserções e deleções podem alterar o quadro de leitura."
- ],
- answer:"D"
-},
-
-{
- type:"HEREDITARIEDADE",
- text:"Um indivíduo desenvolve uma mutação em uma célula da pele após exposição excessiva à radiação ultravioleta. Em condições usuais, essa alteração:",
- options:[
- "A) será obrigatoriamente transmitida aos filhos.",
- "B) transforma-se automaticamente em mutação germinativa.",
- "C) não será herdada pelos descendentes por estar em uma linhagem somática.",
- "D) será incorporada aos espermatozoides ou óvulos.",
- "E) modificará todos os genes do organismo."
- ],
- answer:"C"
-},
-
-{
- type:"GENÉTICA COMPORTAMENTAL",
- text:"A afirmação “existe um único gene responsável pela depressão” é inadequada principalmente porque:",
- options:[
- "A) transtornos mentais não possuem qualquer componente biológico.",
- "B) características comportamentais complexas geralmente apresentam arquitetura poligênica e multifatorial.",
- "C) somente fatores culturais influenciam o comportamento.",
- "D) genes existem apenas durante o desenvolvimento embrionário.",
- "E) neurônios não possuem DNA."
- ],
- answer:"B"
-},
-
-{
- type:"EPIGENÉTICA",
- text:"Qual alternativa descreve melhor a epigenética?",
- options:[
- "A) Alteração obrigatória da sequência de bases do DNA.",
- "B) Destruição permanente de genes pela experiência.",
- "C) Mecanismos regulatórios capazes de modificar padrões de atividade gênica sem exigir mudança na sequência do DNA.",
- "D) Processo exclusivamente psicológico sem participação molecular.",
- "E) Sinônimo de mutação cromossômica."
- ],
- answer:"C"
-},
-
-{
- type:"NEGATIVA / PEGADINHA",
- text:"Sobre epigenética e ambiente, assinale a alternativa INCORRETA.",
- options:[
- "A) Condições ambientais podem estar associadas a alterações na regulação gênica.",
- "B) Metilação do DNA é um mecanismo epigenético importante.",
- "C) Modificações de histonas podem alterar a acessibilidade da cromatina.",
- "D) Toda experiência traumática produz necessariamente a mesma alteração epigenética e essa alteração é obrigatoriamente herdada pelos netos.",
- "E) A relação entre ambiente, fisiologia e expressão gênica é complexa."
- ],
- answer:"D"
-},
-
-{
- type:"INTERPRETAÇÃO",
- text:"Dois gêmeos monozigóticos compartilham praticamente a mesma sequência genética, mas podem apresentar diferenças comportamentais e de saúde ao longo da vida. Qual conclusão é mais adequada?",
- options:[
- "A) O DNA não influencia nenhum fenótipo.",
- "B) O ambiente elimina completamente a genética.",
- "C) Genes e ambiente participam de sistemas complexos de desenvolvimento, podendo produzir diferenças fenotípicas.",
- "D) Gêmeos monozigóticos possuem genomas completamente diferentes.",
- "E) Toda diferença entre os gêmeos é necessariamente causada por mutações."
- ],
- answer:"C"
-},
-
-{
- type:"EXCLUSÃO / ANÁLISE CRÍTICA",
- text:"Um psicólogo recebe uma criança com impulsividade, dificuldades de atenção e exposição crônica à privação de sono e violência comunitária. À luz da genética comportamental e da neurociência, qual raciocínio é MAIS adequado?",
- options:[
- "A) Os sintomas comprovam automaticamente um transtorno genético.",
- "B) O contexto social deve ser ignorado porque não interfere na fisiologia.",
- "C) É necessário avaliar conjuntamente fatores biológicos, psicológicos, desenvolvimentais e ambientais antes de formular conclusões.",
- "D) A presença de adversidade exclui qualquer possibilidade de transtorno neurobiológico.",
- "E) Um exame genético isolado determina necessariamente o diagnóstico psicológico."
- ],
- answer:"C"
-},
-
-{
- type:"QUESTÃO INTEGRADORA",
- text:"Considere a sequência hipotética: Mutação no DNA → alteração do RNAm → alteração de um códon → alteração na sequência de aminoácidos → mudança estrutural da proteína. Qual alternativa interpreta CORRETAMENTE essa sequência?",
- options:[
- "A) Toda mutação obrigatoriamente modifica a proteína.",
- "B) Uma alteração genética pode modificar o produto proteico caso afete de maneira funcionalmente relevante a sequência codificante ou sua expressão.",
- "C) A tradução modifica diretamente a sequência do DNA.",
- "D) O RNAt provoca a mutação original.",
- "E) A proteína alterada retorna ao núcleo e reescreve obrigatoriamente o gene."
- ],
- answer:"B"
-}
-
-];
-
-let current = 0;
-let studentName = "";
-let answers = new Array(questions.length).fill(null);
-
-const loginScreen = document.getElementById("loginScreen");
-const quizScreen = document.getElementById("quizScreen");
-const resultScreen = document.getElementById("resultScreen");
-const questionContainer = document.getElementById("questionContainer");
-const progressText = document.getElementById("progressText");
-
-document.getElementById("startBtn").addEventListener("click", startQuiz);
-
-document.getElementById("studentName").addEventListener("keydown", e => {
-  if(e.key === "Enter") startQuiz();
-});
-
-function startQuiz(){
-  const name = document.getElementById("studentName").value.trim();
+function beginQuestionnaire(){
+  const input=document.getElementById("studentName");
+  const name=input.value.trim();
 
   if(!name){
-    alert("Digite seu nome para iniciar a revisão.");
-    document.getElementById("studentName").focus();
+    input.focus();
+    input.style.borderColor="#c85f73";
+    input.placeholder="Digite o nome para iniciar";
     return;
   }
 
-  studentName = name;
-  current = 0;
-  answers = new Array(questions.length).fill(null);
+  document.getElementById("coverPage").classList.remove("active");
+  document.getElementById("quizPage").classList.add("active");
 
-  loginScreen.classList.remove("active");
-  resultScreen.classList.remove("active");
-  quizScreen.classList.add("active");
+  // A primeira fase sai completamente da tela.
+  window.scrollTo({top:0,behavior:"instant"});
 
-  renderQuestion();
-  window.scrollTo({top:0,behavior:"smooth"});
+  startTimer();
+  updateProgress();
 }
 
-function renderQuestion(){
+function startTimer(){
+  clearInterval(timerId);
+  timerId=setInterval(()=>{
+    if(finished)return;
+    timerSeconds--;
 
-  const q = questions[current];
-  progressText.textContent = `Questão ${current + 1} de ${questions.length}`;
-
-  const selected = answers[current];
-
-  let optionsHTML = "";
-
-  q.options.forEach((option,index)=>{
-
-    const letter = String.fromCharCode(65 + index);
-    const checked = selected === letter ? "checked" : "";
-
-    optionsHTML += `
-      <div class="option">
-        <input
-          type="radio"
-          name="answer"
-          id="option-${letter}"
-          value="${letter}"
-          ${checked}
-          onchange="selectAnswer('${letter}')"
-        >
-        <label for="option-${letter}">
-          <span class="option-letter">${letter}</span>
-          ${escapeHTML(option.substring(3))}
-        </label>
-      </div>
-    `;
-  });
-
-  const isLast = current === questions.length - 1;
-
-  questionContainer.innerHTML = `
-    <div class="question-card">
-
-      <div class="question-head">
-
-        <div class="question-type">${q.type}</div>
-
-        <div class="question-number">
-          QUESTÃO ${current + 1} / ${questions.length}
-        </div>
-
-        <p class="question-text">
-          ${q.text}
-        </p>
-
-      </div>
-
-      <div class="options">
-        ${optionsHTML}
-      </div>
-
-      <div class="navigation">
-
-        <button
-          class="btn btn-secondary"
-          onclick="previousQuestion()"
-          ${current === 0 ? "disabled" : ""}
-        >
-          ← Anterior
-        </button>
-
-        ${
-          isLast
-          ?
-          `<button
-             class="btn btn-primary"
-             onclick="finishQuiz()"
-           >
-             Receber Gabarito ✓
-           </button>`
-          :
-          `<button
-             class="btn btn-primary"
-             onclick="nextQuestion()"
-           >
-             Próxima →
-           </button>`
-        }
-
-      </div>
-
-    </div>
-
-    <div class="hint">
-      ${isLast
-        ? "Você chegou à última questão. Ao clicar em “Receber Gabarito”, todas as respostas serão corrigidas."
-        : "Selecione uma alternativa e avance para a próxima questão. A resposta correta não será revelada durante a prova."
-      }
-    </div>
-  `;
-
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function selectAnswer(letter){
-  answers[current] = letter;
-}
-
-function nextQuestion(){
-
-  if(!answers[current]){
-    alert("Selecione uma alternativa antes de avançar.");
-    return;
-  }
-
-  current++;
-  renderQuestion();
-}
-
-function previousQuestion(){
-  if(current > 0){
-    current--;
-    renderQuestion();
-  }
-}
-
-function finishQuiz(){
-
-  if(!answers[current]){
-    alert("Selecione uma alternativa antes de receber o gabarito.");
-    return;
-  }
-
-  const unanswered = answers.filter(a => a === null).length;
-
-  if(unanswered > 0){
-    const go = confirm(
-      `Ainda existem ${unanswered} questão(ões) sem resposta. Deseja finalizar mesmo assim?`
-    );
-
-    if(!go) return;
-  }
-
-  calculateResult();
-}
-
-function calculateResult(){
-
-  let correct = 0;
-  let wrong = 0;
-
-  questions.forEach((q,index)=>{
-    if(answers[index] === q.answer){
-      correct++;
-    }else if(answers[index] !== null){
-      wrong++;
+    if(timerSeconds<=0){
+      timerSeconds=0;
+      clearInterval(timerId);
+      finishQuiz(true);
     }
-  });
+    renderTimer();
+  },1000);
+  renderTimer();
+}
 
-  const unanswered = answers.filter(a => a === null).length;
-  const percentage = Math.round((correct / questions.length) * 100);
+function renderTimer(){
+  const min=String(Math.floor(timerSeconds/60)).padStart(2,"0");
+  const sec=String(timerSeconds%60).padStart(2,"0");
+  const timer=document.getElementById("timer");
+  document.getElementById("timerText").textContent=`${min}:${sec}`;
+  timer.classList.toggle("warning",timerSeconds<=5*60);
+}
 
-  document.getElementById("studentResultName").textContent =
-    `Aluno(a): ${studentName}`;
+function updateProgress(){
+  let answered=0;
+  for(let i=1;i<=20;i++){
+    if(document.querySelector(`input[name="q${i}"]:checked`))answered++;
+  }
+  document.getElementById("progressBar").style.width=(answered/20*100)+"%";
+  document.getElementById("progressText").textContent=`${answered}/20`;
+}
 
-  document.getElementById("scoreNumber").textContent =
-    `${percentage}%`;
+document.addEventListener("change",updateProgress);
 
-  document.getElementById("correctCount").textContent = correct;
-  document.getElementById("wrongCount").textContent = wrong;
-  document.getElementById("unansweredCount").textContent = unanswered;
+function finishQuiz(timeUp=false){
+  if(finished)return;
+  finished=true;
+  clearInterval(timerId);
 
-  let message = "";
-
-  if(percentage >= 90){
-    message = "Excelente desempenho. Você demonstrou domínio muito consistente do conteúdo.";
-  }else if(percentage >= 75){
-    message = "Muito bom desempenho. O conteúdo principal está bem consolidado; revise os pontos específicos das questões erradas.";
-  }else if(percentage >= 60){
-    message = "Bom ponto de partida. Faça uma segunda revisão concentrada nos conceitos que geraram erro.";
-  }else{
-    message = "É recomendável revisar o conteúdo-base e refazer o simulado após a revisão.";
+  let correct=0,answered=0;
+  for(const [q,key] of Object.entries(answerKey)){
+    const selected=document.querySelector(`input[name="${q}"]:checked`);
+    if(selected){
+      answered++;
+      if(selected.value===key)correct++;
+    }
   }
 
-  document.getElementById("performanceMessage").textContent = message;
+  const grade=correct*0.5;
+  const pct=Math.round(correct/20*100);
 
-  const list = document.getElementById("resultList");
+  document.getElementById("score").textContent=`${grade.toFixed(1).replace(".",",")} / 10,0`;
+  document.getElementById("resultSub").textContent=
+    `${correct} acertos de 20 • ${answered} questões respondidas • aproveitamento de ${pct}%`+
+    (timeUp ? " • tempo encerrado." : ".");
 
-  list.innerHTML = questions.map((q,index)=>{
-
-    const selected = answers[index];
-    const isCorrect = selected === q.answer;
-
-    let statusClass = isCorrect ? "ok" : "bad";
-
-    let selectedText =
-      selected
-      ? q.options[letterIndex(selected)]
-      : "Não respondida";
-
-    return `
-      <div class="result-item ${statusClass}">
-        <strong>Questão ${index+1} — ${isCorrect ? "✓ CERTA" : "✕ ERRADA"}</strong>
-
-        <div class="small" style="margin-top:5px">
-          Sua resposta:
-          <strong>${selectedText}</strong>
-        </div>
-
-        <div class="small">
-          Gabarito:
-          <strong>${q.answer}</strong>
-        </div>
-      </div>
-    `;
-
-  }).join("");
-
-  quizScreen.classList.remove("active");
-  resultScreen.classList.add("active");
-
-  window.scrollTo({top:0,behavior:"smooth"});
+  document.getElementById("result").classList.add("show");
+  document.getElementById("result").scrollIntoView({behavior:"smooth",block:"center"});
 }
-
-function letterIndex(letter){
-  return letter.charCodeAt(0) - 65;
-}
-
-function restartQuiz(){
-  resultScreen.classList.remove("active");
-  quizScreen.classList.remove("active");
-  loginScreen.classList.add("active");
-
-  document.getElementById("studentName").value = studentName;
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function escapeHTML(text){
-  const div = document.createElement("div");
-  div.textContent = text;
-  return div.innerHTML;
-}
-
 </script>
-
 </body>
 </html>
